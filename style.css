@@ -1,0 +1,283 @@
+/* ---------------------------- */
+/*             RESET            */
+/* ---------------------------- */
+
+/* https://piccalil.li/blog/a-modern-css-reset/ */
+
+/* Box sizing */
+/* Pseudo elements are also included since it is not automatically selected. */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    /* Calculating widths & heights easier */
+}
+
+/* Reset margins */
+/* Can be used to battle "collapsing margins" */
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+p,
+figure,
+picture {
+    margin: 0;
+}
+
+
+/* Design requires no bold to be used. */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+    font-weight: 400;
+}
+
+
+/* Make images easier to work with */
+img,
+picture {
+    max-width: 100%;
+    /* display: block; */
+    /* This element has been commented out, since the "hidden" attribute won't work when display block is enabled. */
+}
+
+/* Make forms elements easier to work with */
+input,
+button,
+textarea,
+select {
+    font: inherit;
+    /* Default: font properties are not inherited for these elements */
+}
+
+/* Remove animations for people who've turned them off */
+@media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+}
+
+
+/* ---------------------------- */
+/*      CUSTOM PROPERTIES       */
+/* ---------------------------- */
+:root {
+    transition-behavior: allow-discrete;
+    /* Allow for discrete rules to be animatable. Copy this to the location where it is used. This property is not inherited.*/
+    interpolate-size: allow-keywords;
+    /* Allows for animating to height auto */
+    
+    /* Primary color */
+    --clr-red-400: 0, 100%, 74%;
+    --clr-green-400: 154, 59%, 51%;
+
+    /* Accent color */
+    --clr-purple-700: 248, 32%, 49%;
+
+    /* Neutral color */
+    --clr-gray-900: 249, 10%, 26%;
+    --clr-purple-350: 246, 25%, 77%;
+
+
+    /* Typography */
+    --fs-p: 1rem;
+
+    --ff-Poppins: "Poppins", sans-serif;
+
+    --fw-400: 400;
+    --fw-500: 500;
+    --fw-600: 600;
+    --fw-700: 700;
+
+}
+
+/* ---------------------------- */
+/*       UTILITY CLASSES        */
+/* ---------------------------- */
+
+/* Screen reader only */
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    /* Added line */
+    border: 0;
+}
+
+
+/* ---------------------------- */
+/*        PAGE SPECIFICS        */
+/* ---------------------------- */
+/* Main body element */
+body {
+    background-image: url(./images/bg-intro-mobile.png);
+    background-color: hsl(var(--clr-red-400));
+
+    color: hsl(0, 100%, 100%);
+
+    height: 100vh;
+    
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    grid-template-columns: auto;
+    grid-template-areas: 
+    "."
+    "content"
+    "footer"
+    ;
+
+    font-family: var(--ff-Poppins);
+    font-size: var(--fs-p);
+}
+
+/* Container element - contains all the content */
+.container {
+    grid-area: content;
+    align-self: center;
+    margin: 1rem;
+
+    display: grid;
+
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.container header h1 {
+    font-weight: var(--fw-700);
+    padding-block: 1rem;
+}
+
+.container article h2 {
+    background-color: hsl(var(--clr-purple-700));
+    font-size: var(--fs-p);
+    padding-inline: 5rem;
+    padding-block: 1rem;
+    border-radius: 0.5rem;
+    box-shadow: 0px 7px hsla(var(--clr-gray-900), 0.3);
+    margin-bottom: 2rem;
+}
+
+.container .user-form {
+    background-color: hsl(0, 100%, 100%);
+    padding: 1rem;
+    color: hsla(var(--clr-gray-900));
+    border-radius: 0.5rem;
+    box-shadow: 0px 7px hsla(var(--clr-gray-900), 0.3);
+}
+
+.container .user-form form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    width: 100%;
+}
+
+.container .user-form form input {
+    text-align: left;
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+    border: 1px solid hsla(var(--clr-gray-900), 0.1);
+}
+
+.container .user-form form input::placeholder {
+    font-weight: var(--fw-600);
+    font-size: 0.875rem;
+}
+
+.container .user-form button {
+    padding: 1rem;
+    text-transform: uppercase;
+    background-color: hsl(var(--clr-green-400));
+    border: 0;
+    border-radius: 0.5rem;
+    color: hsl(0, 100%, 100%);
+    font-weight: var(--fw-500);
+    box-shadow: 0px 7px hsla(var(--clr-green-400), 0.75);
+}
+
+.container .user-form p {
+    color: hsla(var(--clr-gray-900), 0.3);
+    font-size: 0.675rem;
+    padding-inline: 2rem;
+    padding-block: 1rem;
+
+    span {
+        color: hsl(var(--clr-red-400));
+        font-weight: var(--fw-700);
+    }
+}
+
+/* Footer element - contains links. */
+footer {
+    grid-area: footer;
+    justify-items: center;
+    font-size: 0.75rem;
+
+    a,
+    a:visited {
+        text-decoration: none;
+        color: inherit;
+    };
+
+    a:hover,
+    a:focus {
+        text-decoration: underline;
+        color: hsl(var(--clr-purple-700));
+    }
+}
+
+
+/* Desktop */
+@media (width > 375px) {
+    body {
+        background-image: url(./images/bg-intro-desktop.png);
+    }
+}
+
+@media (width > 480px) {
+    .container {
+        grid-template-rows: auto 1fr auto;
+        grid-template-columns: 1fr auto auto 1fr;
+        grid-template-areas: 
+        ". . . ."
+        ". header login ."
+        "footer footer footer footer"
+        ;
+        gap: clamp(1rem, 5vw, 5rem);
+    }
+
+    .container header {
+        grid-area: header;
+    }
+
+    .container article {
+        grid-area: login;
+
+        h2 {
+            padding-inline: clamp(1rem, 2vw, 3rem);
+        }
+    }
+
+    footer {
+        grid-area: footer;
+    }
+}
