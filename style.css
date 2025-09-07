@@ -202,7 +202,21 @@ body {
 
 .container .user-form form input::placeholder {
     font-weight: var(--fw-600);
-    
+}
+
+.container .user-form form div {
+    position: relative;
+    display: inline-block;
+}
+
+.container .user-form form div.problem::after {
+    content: url(./images/icon-error.svg);
+    position: absolute;
+    right: 10px;
+    top: 18px;
+    transform: translateY(-50%);
+    width: 20px;
+    height: 20px;
 }
 
 .container .user-form button {

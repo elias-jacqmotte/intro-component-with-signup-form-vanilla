@@ -14,6 +14,7 @@ submit.addEventListener('click', (event) => {
             element.style.borderWidth = '2px';
             element.nextElementSibling.nextElementSibling.style.display = "block";
             element.nextElementSibling.nextElementSibling.textContent = `${element.placeholder} cannot be empty`
+            element.parentElement.classList.add('problem');
 
             // if the element is email and has some characters in it: change the textcontent
             if ( element.name == "email" && element.value.length > 0 ) {
@@ -35,6 +36,7 @@ submit.addEventListener('click', (event) => {
             element.style.color = '';
             element.style.fontWeight = '';
             element.nextElementSibling.nextElementSibling.style.display = '';
+            element.parentElement.classList.remove('problem');
         }
     })
 })

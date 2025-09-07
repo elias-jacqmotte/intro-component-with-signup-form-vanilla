@@ -42,7 +42,7 @@ Users should be able to:
 
 ### Links
 
-- Live Site URL: [Add live site URL here](https://your-live-site-url.com)
+- Live Site URL: [Github pages](https://elias-jacqmotte.github.io/intro-component-with-signup-form-vanilla/)
 
 ## My process
 
